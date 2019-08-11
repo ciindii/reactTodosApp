@@ -13,7 +13,7 @@ class App extends React.Component {
         {
           id: 2,
           title: 'dinner with husband',
-          completed: true
+          completed: false
         },
         {
           id: 3,
@@ -22,11 +22,26 @@ class App extends React.Component {
         }
       ]
     }
+
+    markComplete = (id) => {
+      this.setState({ todos: this.state.todos.map(todo => {
+        if(todo.id === id) {
+          // !todo (whatever is oppisite)
+          todo.completed = !todo.completed
+        }
+        return todo;
+      }) });
+    }
+
+    delTodo = (id) => {
+      this.setState();
+    }
+
   render(){
     return (
       <div className="App">
         <h1>hello world</h1>
-        <Todos todos={this.state.todos}/>
+        <Todos todos={this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo} />
       </div>
     );
   }
