@@ -1,6 +1,9 @@
 import React from 'react';
 import './App.css';
+import Header from './components/layout/Header';
+import AddTodo from './components/AddTodo';
 import Todos from './components/Todos';
+
 
 class App extends React.Component {
   state = {
@@ -32,15 +35,17 @@ class App extends React.Component {
         return todo;
       }) });
     }
-
+    // return only the todos that dont match the ID passed in because we want to delete that one
+    // for each todos filter out any/return todo where the id is NOT = to the id that passed in here (delTodo = (id in here) => {} )
     delTodo = (id) => {
-      this.setState();
+      this.setState({ todos: [...this.state.todos.filter(todo => todo.id !==id)] });
     }
 
   render(){
     return (
       <div className="App">
-        <h1>hello world</h1>
+        <Header />
+        <AddTodo />
         <Todos todos={this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo} />
       </div>
     );
