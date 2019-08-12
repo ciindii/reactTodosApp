@@ -51,9 +51,12 @@ class App extends React.Component {
 
     //delTodo delete todo item
 
+
     // return only the todos that dont match the ID passed in because we want to delete that one
     // for each todos filter out any/return todo where the id is NOT = to the id that passed in here (delTodo = (id in here) => {} )
     delTodo = (id) => {
+      //axios.delete('https://jsonplaceholder.typicode.com/todos/${id}')
+        //.then(res => this.setState({ todos: [...this.state.todos.filter(todo => todo.id !==id)] )
       this.setState({ todos: [...this.state.todos.filter(todo => todo.id !==id)] });
     }
 
